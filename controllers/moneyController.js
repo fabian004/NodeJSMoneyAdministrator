@@ -9,7 +9,7 @@ export const getAllMoney = async (req, res) => {
     return res.status(400).json({ error: 'El parámetro user es requerido' });
   }
 
-  const { data, error } = await supabase.from('Money').select('*').eq('user', user);
+  const { data, error } = await supabase.from('Money').select('*').eq('user', user).order('id','desc');
   if (error) {
     return res.status(400).json({ error: error.message });
   }
